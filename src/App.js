@@ -28,13 +28,13 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 firebase.initializeApp({
-  apiKey: "AIzaSyBaNK_dKkYrIJKmDa31f6Lm79_y2mPJRac",
-  authDomain: "super-chat-3aab4.firebaseapp.com",
-  projectId: "super-chat-3aab4",
-  storageBucket: "super-chat-3aab4.appspot.com",
-  messagingSenderId: "294531572294",
-  appId: "1:294531572294:web:41cfa4f876e0da4b4ba047",
-  measurementId: "G-JT4Q6RTTYD"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 })
 
 const auth = firebase.auth();
@@ -113,9 +113,9 @@ function ChatMessage(props) {
   const { text, uid, photoURL } = props.message;
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'recieved';
   return (
-    <Flex pl={6} pr={6} mb={5} alignSelf={messageClass ==='sent' && 'flex-end'} flexDirection={messageClass ==='sent' && 'row-reverse'}>
+    <Flex pl={6} pr={6} mb={5} alignSelf={messageClass === 'sent' && 'flex-end'} flexDirection={messageClass === 'sent' && 'row-reverse'}>
       <Avatar name='avatar' src={photoURL ? photoURL : 'https://bit.ly/dan-abramov'} />
-      <Flex ml={2} mr={2} rounded={'2xl'} bgGradient={messageClass ==='sent' ? 'linear(to-r, purple.400, purple.300)' : 'linear(to-r, teal.300, teal.400)'}>
+      <Flex ml={2} mr={2} rounded={'2xl'} bgGradient={messageClass === 'sent' ? 'linear(to-r, purple.400, purple.300)' : 'linear(to-r, teal.300, teal.400)'}>
         <Text textAlign={'justify'}>{text}</Text>
       </Flex>
     </Flex>
