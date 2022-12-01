@@ -16,7 +16,6 @@ import {
   AlertDialogOverlay,
   useDisclosure
 } from '@chakra-ui/react'
-// import { IconName } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import './App.css';
 
